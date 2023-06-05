@@ -30,6 +30,26 @@ export class App extends Component {
     }));
   };
 
+  LOCAL_STORAGE_CONTACTS = 'local_contacts';
+
+  componentDidMount() {
+    const resultContacts = JSON.parse(
+      localStorage.getItem(this.LOCAL_STORAGE_CONTACTS)
+    );
+
+    if (resultContacts) {
+      this.setState({ contacts: resultContacts });
+    }
+  }
+  componentDidUpdate(predProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(
+        this.LOCAL_STORAGE_CONTACTS,
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
+
   checkname = newContact => {
     if (
       this.state.contacts.find(

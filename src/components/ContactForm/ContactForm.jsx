@@ -37,6 +37,7 @@ export class ContactForm extends Component {
             onChange={this.handleChange}
             required
             autoFocus
+            autoComplete="off"
             className={styles.input}
             value={this.state.name}
           />
@@ -50,6 +51,7 @@ export class ContactForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             onChange={this.handleChange}
             required
+            autoComplete="off"
             className={styles.input}
             value={this.state.number}
           />
